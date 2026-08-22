@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { ArrowLeft, Check, AlertTriangle, RefreshCw, BarChart3, HelpCircle } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, RefreshCw, BarChart3 } from 'lucide-react';
 
 interface Level4Props {
   onBack: () => void;

@@ -13,7 +13,7 @@ import { Level4Analizar } from './pages/modules/Level4Analizar';
 import { Level5Evaluar } from './pages/modules/Level5Evaluar';
 import { Level6Crear } from './pages/modules/Level6Crear';
 
-import { LogOut, BookOpen, GraduationCap, BarChart2, ShieldAlert, Award, User } from 'lucide-react';
+import { LogOut, BookOpen, GraduationCap, BarChart2, Award, User } from 'lucide-react';
 
 const MainAppContent: React.FC = () => {
   const { user, token, logout } = useAuth();

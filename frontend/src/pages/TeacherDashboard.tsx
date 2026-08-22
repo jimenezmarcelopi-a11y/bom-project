@@ -225,7 +225,7 @@ export const TeacherDashboard: React.FC = () => {
                 </thead>
                 <tbody>
                   {studentsList.map((st) => (
-                    <tr key={st.id} style={{ borderBottom: '1px solid var(--panel-border)', hover: { background: 'rgba(255,255,255,0.01)' } }}>
+                    <tr key={st.id} style={{ borderBottom: '1px solid var(--panel-border)' }}>
                       <td style={{ padding: '16px 20px', fontWeight: 600 }}>{st.nombre}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>{st.correo}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>
@@ -260,7 +260,7 @@ export const TeacherDashboard: React.FC = () => {
                   Atrás a la lista
                 </button>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid var(--panel-border)' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(16,185,129,0.1)', display: 'flex', alignItems: 'center', justify: 'center', color: '#10b981' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(16,185,129,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
                     <User size={24} />
                   </div>
                   <div>
@@ -276,7 +276,7 @@ export const TeacherDashboard: React.FC = () => {
                     const info = selectedStudent.modulos[modName] || { progreso: 0, tiempo: 0 };
                     return (
                       <div key={idx} style={{ fontSize: '0.88rem' }}>
-                        <div style={{ display: 'flex', justify: 'space-between', marginBottom: '4px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                           <span>Nivel {idx + 1}: {modName}</span>
                           <span style={{ fontWeight: 600 }}>{Math.round(info.progreso)}%</span>
                         </div>
@@ -353,7 +353,7 @@ export const TeacherDashboard: React.FC = () => {
                       setGradingFeedback('');
                     }}
                   >
-                    <div style={{ display: 'flex', justify: 'space-between', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                       <span style={{ fontSize: '0.75rem', color: '#10b981', background: 'rgba(16,185,129,0.12)', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', fontWeight: 700 }}>
                         {item.tipo === 'debate' ? 'Evaluación (Caso)' : 'Creación (Portfolio)'}
                       </span>
@@ -429,7 +429,7 @@ export const TeacherDashboard: React.FC = () => {
 
                         <form onSubmit={submitGrade} style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderTop: '1px solid var(--panel-border)', paddingTop: '16px' }}>
                           <div className="form-group">
-                            <div style={{ display: 'flex', justifyBetween: 'space-between', marginBottom: '4px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                               <label className="form-label">Calificación (0 - 100)</label>
                               <span style={{ color: '#10b981', fontWeight: 700 }}>{gradeScore} / 100</span>
                             </div>

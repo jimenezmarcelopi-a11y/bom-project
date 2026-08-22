@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { ArrowLeft, Save, Scale, FileText, Check, Award, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Save, Scale, FileText, Check, AlertCircle } from 'lucide-react';
 
 interface Level5Props {
   onBack: () => void;

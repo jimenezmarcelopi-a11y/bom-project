@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Award, ShieldCheck, Clipboard, Star, Check, AlertCircle, BarChart3, HelpCircle } from 'lucide-react';
+import { ShieldCheck, Clipboard, Star, BarChart3 } from 'lucide-react';
 
 interface AggregateReport {
   promedios: {
@@ -204,7 +204,7 @@ export const ExpertDashboard: React.FC = () => {
             </p>
 
             <div className="form-group" style={{ marginBottom: '16px' }}>
-              <div style={{ display: 'flex', justifyBetween: 'space-between', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <label className="form-label">Valoración Técnica (1 = Deficiente, 5 = Excelente)</label>
                 <span style={{ color: '#8b5cf6', fontWeight: 700 }}>{pedVal} / 5</span>
               </div>
@@ -239,7 +239,7 @@ export const ExpertDashboard: React.FC = () => {
             </p>
 
             <div className="form-group" style={{ marginBottom: '16px' }}>
-              <div style={{ display: 'flex', justifyBetween: 'space-between', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <label className="form-label">Valoración Técnica (1 = Deficiente, 5 = Excelente)</label>
                 <span style={{ color: '#10b981', fontWeight: 700 }}>{tecVal} / 5</span>
               </div>
@@ -274,7 +274,7 @@ export const ExpertDashboard: React.FC = () => {
             </p>
 
             <div className="form-group" style={{ marginBottom: '16px' }}>
-              <div style={{ display: 'flex', justifyBetween: 'space-between', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <label className="form-label">Valoración Técnica (1 = Deficiente, 5 = Excelente)</label>
                 <span style={{ color: '#38bdf8', fontWeight: 700 }}>{disVal} / 5</span>
               </div>
@@ -326,7 +326,7 @@ export const ExpertDashboard: React.FC = () => {
                 <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {/* Ped */}
                   <div>
-                    <div style={{ display: 'flex', justify: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
                       <span>Dimensión Pedagógica</span>
                       <span style={{ fontWeight: 600 }}>{report.promedios.pedagogica} / 5</span>
                     </div>
@@ -337,7 +337,7 @@ export const ExpertDashboard: React.FC = () => {
 
                   {/* Tec */}
                   <div>
-                    <div style={{ display: 'flex', justify: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
                       <span>Dimensión Tecnológica (COdA)</span>
                       <span style={{ fontWeight: 600 }}>{report.promedios.tecnica} / 5</span>
                     </div>
@@ -348,7 +348,7 @@ export const ExpertDashboard: React.FC = () => {
 
                   {/* Dis */}
                   <div>
-                    <div style={{ display: 'flex', justify: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', marginBottom: '4px' }}>
                       <span>Dimensión Disciplinar (Física)</span>
                       <span style={{ fontWeight: 600 }}>{report.promedios.disciplinar} / 5</span>
                     </div>
@@ -365,7 +365,7 @@ export const ExpertDashboard: React.FC = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxHeight: '550px', overflowY: 'auto', paddingRight: '8px' }}>
                   {report.detalles_por_experto.map((exp, idx) => (
                     <div key={idx} className="glass-panel" style={{ background: 'rgba(30, 41, 59, 0.2)' }}>
-                      <div style={{ borderBottom: '1px solid var(--panel-border)', paddingBottom: '8px', marginBottom: '12px', display: 'flex', justifyBetween: 'space-between', fontSize: '0.85rem' }}>
+                      <div style={{ borderBottom: '1px solid var(--panel-border)', paddingBottom: '8px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
                         <strong>{exp.nombre}</strong>
                         <span style={{ color: 'var(--text-muted)' }}>{new Date(exp.fecha).toLocaleDateString()}</span>
                       </div>

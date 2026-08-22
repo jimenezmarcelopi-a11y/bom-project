@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Play, Award, Clock, FileText, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Play, Award, Clock, FileText, CheckCircle2 } from 'lucide-react';
 
 interface DashboardProps {
   onSelectModule: (moduleNum: number) => void;
@@ -164,7 +164,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
         gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
         gap: '24px'
       }} className="animate-fade-in">
-        {modules.map((mod, index) => {
+        {modules.map((mod) => {
           const modProgress = progress[mod.id] || { progreso_porcentaje: 0, tiempo_permanencia: 0, actividades_completadas: 0 };
           const percent = Math.round(modProgress.progreso_porcentaje);
           

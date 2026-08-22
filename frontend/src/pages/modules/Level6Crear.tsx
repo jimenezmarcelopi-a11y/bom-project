@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { ArrowLeft, Save, Sparkles, BookOpen, Send, Check, Eye, HelpCircle } from 'lucide-react';
+import { ArrowLeft, Save, Sparkles, BookOpen, Send, Eye, HelpCircle } from 'lucide-react';
 
 interface Level6Props {
   onBack: () => void;
@@ -76,12 +76,13 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
   const fetchPortfolio = async () => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
+      let portAct: any = null;
       
       // Activity ID
       const actRes = await fetch(`${apiBase}/activities/module/6`, { headers });
       if (actRes.ok) {
         const acts = await actRes.json();
-        const portAct = acts.find((a: any) => a.tipo === 'portafolio');
+        portAct = acts.find((a: any) => a.tipo === 'portafolio');
         if (portAct) setActivityId(portAct.id);
       }
 
@@ -406,7 +407,7 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
 
           <div>
             <h2 style={{ fontSize: '1.4rem', marginBottom: '16px' }}>Validador Físico con Inteligencia Artificial</h2>
-            <div className="glass-panel" style={{ padding: '24px', minHeight: '320px', display: 'flex', flexDirection: 'column', justifyBetween: 'space-between' }}>
+              <div className="glass-panel" style={{ padding: '24px', minHeight: '320px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5', marginBottom: '16px' }}>
                   El módulo de IA de la plataforma BOM puede verificar si tu problema está correctamente redactado y si la ecuación matemática física y la resolución numérica planteada guardan coherencia científica.

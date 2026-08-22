@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { ArrowLeft, BookOpen, Brain, Play, RotateCcw, AlertCircle, Check, HelpCircle } from 'lucide-react';
+import { ArrowLeft, BookOpen, Brain, Play, RotateCcw, AlertCircle, Check } from 'lucide-react';
 
 interface Level2Props {
   onBack: () => void;

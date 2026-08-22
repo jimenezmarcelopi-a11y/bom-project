@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Sparkles, BookOpen, UserCheck, ShieldAlert, ArrowRight, User } from 'lucide-react';
+import { Sparkles, UserCheck, ShieldAlert, ArrowRight, User } from 'lucide-react';
 
 interface LoginProps {
   onSuccess: () => void;
