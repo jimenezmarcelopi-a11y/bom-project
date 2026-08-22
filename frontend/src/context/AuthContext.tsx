@@ -37,7 +37,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [progress, setProgress] = useState<ProgressState>({});
   const [loading, setLoading] = useState<boolean>(true);
   
-  const apiBase = import.meta.env.VITE_API_URL?`${import.meta.env.VITE_API_URL}/api`: "https://bom-backend-3m2a.onrender.com/api";
+  const configuredApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+  const apiBase = `${configuredApiUrl.replace(/\/$/, '')}/api`;
 
   // Load user from localStorage on startup
   useEffect(() => {

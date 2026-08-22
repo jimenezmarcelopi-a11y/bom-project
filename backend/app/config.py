@@ -7,5 +7,6 @@ class Settings(BaseSettings):
     ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440"))
     OLLAMA_HOST: str = os.getenv("OLLAMA_HOST", "http://ollama:11434")
+    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "")
 
 settings = Settings()

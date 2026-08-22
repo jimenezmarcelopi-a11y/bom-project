@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
 
 from app.database import init_db, engine
+from app.config import settings
 from app.models import User, Module, Activity
 from app.routers import auth, modules, activities, experts, admin, ai
 
@@ -233,10 +234,11 @@ app = FastAPI(
 )
 
 # CORS Configuration
+allowed_origins = [origin.strip() for origin in settings.FRONTEND_URL.split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For dev environment docker mapping, restrict in prod
-    allow_credentials=True,
+    allow_origins=allowed_origins or ["*"],
+    allow_credentials=bool(allowed_origins),
     allow_methods=["*"],
     allow_headers=["*"],
 )
