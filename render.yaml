@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: bom-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://bom-backend-3m2a.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
