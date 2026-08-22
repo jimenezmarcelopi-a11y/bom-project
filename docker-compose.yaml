@@ -1,0 +1,79 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: bom_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bom_secure_password_2026
+      POSTGRES_DB: bom_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - bom-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bom_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://postgres:bom_secure_password_2026@postgres:5432/bom_db
+      - SECRET_KEY=bom_super_secret_jwt_key_for_mru_ova_2026
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+      - OLLAMA_HOST=http://ollama:11434
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - postgres
+    networks:
+      - bom-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bom_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - bom-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: bom_ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    networks:
+      - bom-network
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --url http://backend:8000
+    restart: always
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  ollama:
+
+networks:
+  bom-network:
+    driver: bridge
