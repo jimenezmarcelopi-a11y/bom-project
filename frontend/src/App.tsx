@@ -54,17 +54,17 @@ const MainAppContent: React.FC = () => {
       case 'expert-panel':
         return <ExpertDashboard onNavigate={handleNavigate} />;
       case 'level1':
-        return <Level1Recordar onBack={() => handleNavigate(getHomeView())} />;
+        return <Level1Recordar onBack={() => handleNavigate('dashboard')} />;
       case 'level2':
-        return <Level2Comprender onBack={() => handleNavigate(getHomeView())} />;
+        return <Level2Comprender onBack={() => handleNavigate('dashboard')} />;
       case 'level3':
-        return <Level3Aplicar onBack={() => handleNavigate(getHomeView())} />;
+        return <Level3Aplicar onBack={() => handleNavigate('dashboard')} />;
       case 'level4':
-        return <Level4Analizar onBack={() => handleNavigate(getHomeView())} />;
+        return <Level4Analizar onBack={() => handleNavigate('dashboard')} />;
       case 'level5':
-        return <Level5Evaluar onBack={() => handleNavigate(getHomeView())} />;
+        return <Level5Evaluar onBack={() => handleNavigate('dashboard')} />;
       case 'level6':
-        return <Level6Crear onBack={() => handleNavigate(getHomeView())} />;
+        return <Level6Crear onBack={() => handleNavigate('dashboard')} />;
       default:
         return <Dashboard onSelectModule={(num) => handleNavigate(`level${num}`)} />;
     }
