@@ -1,12 +1,13 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Play, Award, Clock, FileText, CheckCircle2 } from 'lucide-react';
+import { Play, Award, Clock, FileText, CheckCircle2, ArrowLeft } from 'lucide-react';
 
 interface DashboardProps {
   onSelectModule: (moduleNum: number) => void;
+  onBack?: () => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule, onBack }) => {
   const { user, progress } = useAuth();
 
   const modules = [
@@ -89,6 +90,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
 
   return (
     <div className="container" style={{ padding: '40px 24px' }}>
+      {onBack && (
+        <button className="btn btn-outline" onClick={onBack} style={{ marginBottom: '24px' }}>
+          <ArrowLeft size={16} /> Volver al panel
+        </button>
+      )}
       
       {/* Welcome Banner */}
       <div className="glass-panel animate-fade-in" style={{

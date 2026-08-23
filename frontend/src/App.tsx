@@ -39,6 +39,8 @@ const MainAppContent: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
+  const getHomeView = () => user?.rol === 'docente' ? 'teacher-panel' : user?.rol === 'experto' ? 'expert-panel' : 'dashboard';
+
   const renderView = () => {
     if (!token) {
       return <Login onSuccess={() => {}} />;
@@ -46,23 +48,23 @@ const MainAppContent: React.FC = () => {
 
     switch (currentView) {
       case 'dashboard':
-        return <Dashboard onSelectModule={(num) => handleNavigate(`level${num}`)} />;
+        return <Dashboard onSelectModule={(num) => handleNavigate(`level${num}`)} onBack={user?.rol === 'estudiante' ? undefined : () => handleNavigate(getHomeView())} />;
       case 'teacher-panel':
         return <TeacherDashboard onNavigate={handleNavigate} />;
       case 'expert-panel':
         return <ExpertDashboard onNavigate={handleNavigate} />;
       case 'level1':
-        return <Level1Recordar onBack={() => handleNavigate('dashboard')} />;
+        return <Level1Recordar onBack={() => handleNavigate(getHomeView())} />;
       case 'level2':
-        return <Level2Comprender onBack={() => handleNavigate('dashboard')} />;
+        return <Level2Comprender onBack={() => handleNavigate(getHomeView())} />;
       case 'level3':
-        return <Level3Aplicar onBack={() => handleNavigate('dashboard')} />;
+        return <Level3Aplicar onBack={() => handleNavigate(getHomeView())} />;
       case 'level4':
-        return <Level4Analizar onBack={() => handleNavigate('dashboard')} />;
+        return <Level4Analizar onBack={() => handleNavigate(getHomeView())} />;
       case 'level5':
-        return <Level5Evaluar onBack={() => handleNavigate('dashboard')} />;
+        return <Level5Evaluar onBack={() => handleNavigate(getHomeView())} />;
       case 'level6':
-        return <Level6Crear onBack={() => handleNavigate('dashboard')} />;
+        return <Level6Crear onBack={() => handleNavigate(getHomeView())} />;
       default:
         return <Dashboard onSelectModule={(num) => handleNavigate(`level${num}`)} />;
     }
@@ -133,7 +135,7 @@ const MainAppContent: React.FC = () => {
               <User size={14} />
               {user.nombre} ({getRoleDisplayName(user.rol)})
             </span>
-            <button className="btn btn-outline" onClick={logout} style={{ padding: '6px 12px', fontSize: '0.85rem', height: '36px' }}>
+            <button className="btn" onClick={logout} style={{ padding: '6px 12px', fontSize: '0.85rem', height: '36px', color: '#FFFFFF', background: 'var(--primary)', border: '1px solid var(--primary)' }}>
               <LogOut size={16} /> Salir
             </button>
           </div>

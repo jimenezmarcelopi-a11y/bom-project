@@ -35,8 +35,12 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState<string>('study'); // study, cards, matching, quiz
   
   // Data States
-  const [glossary, setGlossary] = useState<GlossaryItem[]>([]);
-  const [timeline, setTimeline] = useState<TimelineItem[]>([]);
+  const [glossary, setGlossary] = useState<GlossaryItem[]>([
+    { term: 'Movimiento Rectilíneo Uniforme (MRU)', definition: 'Movimiento en línea recta con velocidad constante y aceleración nula.', formula: null, unit: null }
+  ]);
+  const [timeline, setTimeline] = useState<TimelineItem[]>([
+    { era: 'Concepto fundamental', title: 'Movimiento uniforme', description: 'En el MRU se recorren distancias iguales en intervalos de tiempo iguales.', icon: 'book' }
+  ]);
   const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([]);
   const [activityIds, setActivityIds] = useState<{ [key: string]: string }>({});
 
@@ -468,7 +472,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                         : selectedVar === v 
                           ? '1px solid #3b82f6' 
                           : '1px solid var(--panel-border)',
-                      color: isMatched ? '#10b981' : 'white',
+                      color: isMatched ? '#16824F' : 'var(--text-primary)',
                       pointerEvents: isMatched ? 'none' : 'auto'
                     }}
                   >
@@ -511,7 +515,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                         : selectedUnit === u 
                           ? '1px solid #3b82f6' 
                           : '1px solid var(--panel-border)',
-                      color: isMatched ? '#10b981' : 'white',
+                      color: isMatched ? '#16824F' : 'var(--text-primary)',
                       pointerEvents: isMatched ? 'none' : 'auto'
                     }}
                   >
@@ -556,7 +560,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                     
                     let bg = 'rgba(15, 23, 42, 0.5)';
                     let border = '1px solid var(--panel-border)';
-                    let color = 'white';
+                    let color = 'var(--text-primary)';
 
                     if (quizSubmitted) {
                       if (isCorrect) {

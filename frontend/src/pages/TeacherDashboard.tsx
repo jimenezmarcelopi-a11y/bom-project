@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Users, FileText, CheckSquare, BarChart, User, Clock, Award, Star, RefreshCw, Send } from 'lucide-react';
+import { Users, FileText, CheckSquare, BarChart, User, Clock, Award, RefreshCw, Send } from 'lucide-react';
 
 interface StudentReportItem {
   id: number;
@@ -490,16 +490,8 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ onNavigate }
               {/* Metrics cards grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
                 <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ padding: '12px', background: '#E3F5FB', borderRadius: '12px', color: '#187FA8' }}>
-                    <BarChart size={24} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Progreso Promedio del Grupo</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{groupProgress}%</div>
-                    <div style={{ height: '6px', background: '#E1EAF2', borderRadius: '3px', overflow: 'hidden', marginTop: '6px' }}>
-                      <div style={{ height: '100%', width: `${groupProgress}%`, background: 'var(--primary)', borderRadius: '3px' }} />
-                    </div>
-                  </div>
+                  <div style={{ padding: '12px', background: '#E3F5FB', borderRadius: '12px', color: '#187FA8' }}><BarChart size={24} /></div>
+                  <div style={{ flex: 1 }}><div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Progreso Promedio del Grupo</div><div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{groupProgress}%</div><div style={{ height: '6px', background: '#E1EAF2', borderRadius: '3px', overflow: 'hidden', marginTop: '6px' }}><div style={{ height: '100%', width: `${groupProgress}%`, background: 'var(--primary)', borderRadius: '3px' }} /></div></div>
                 </div>
                 <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{ padding: '12px', background: 'rgba(16, 185, 129, 0.15)', borderRadius: '12px', color: '#10b981' }}>
@@ -508,16 +500,6 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ onNavigate }
                   <div>
                     <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Alumnos Totales</div>
                     <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{stats.usuarios_conteo.estudiante}</div>
-                  </div>
-                </div>
-
-                <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ padding: '12px', background: 'rgba(56, 189, 248, 0.15)', borderRadius: '12px', color: '#38bdf8' }}>
-                    <Star size={24} />
-                  </div>
-                  <div>
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Validadores Expertos</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{stats.usuarios_conteo.experto}</div>
                   </div>
                 </div>
 

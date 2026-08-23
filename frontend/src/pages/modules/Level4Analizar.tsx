@@ -333,7 +333,7 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
               
               let bg = '#FFFFFF';
               let border = '1px solid var(--panel-border)';
-              let color = 'white';
+              let color = 'var(--text-primary)';
 
               if (debugSubmitted) {
                 if (isCorrect) {

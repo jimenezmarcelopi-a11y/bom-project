@@ -19,7 +19,10 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState<string>('case'); // case, rubric
   
   // Data
-  const [caseData, setCaseData] = useState<CaseData | null>(null);
+  const [caseData, setCaseData] = useState<CaseData>({
+    caso: 'Un conductor recorre 3 km en 2 minutos. El velocímetro registró una velocidad máxima de 80 km/h. Analiza si la fotomulta está justificada usando la velocidad media.',
+    preguntas_guia: ['¿Cuál es la velocidad media del trayecto?', '¿Cómo se relacionan la velocidad media y la instantánea?', '¿Qué evidencia respalda tu veredicto?']
+  });
   const [activityId, setActivityId] = useState<string | null>(null);
 
   // Argument Form States
@@ -189,7 +192,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
       </div>
 
       {/* TAB 1: CASE STUDY & FORM */}
-      {activeTab === 'case' && caseData && (
+      {activeTab === 'case' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '32px' }} className="animate-fade-in">
           <div>
             <h2 style={{ fontSize: '1.4rem', marginBottom: '16px' }}>Estudio de Caso Real</h2>

@@ -549,7 +549,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                         : selectedDesc === d 
                           ? '#10b981' 
                           : 'var(--panel-border)',
-                      color: isMatched ? '#10b981' : 'white',
+                      color: isMatched ? '#16824F' : 'var(--text-primary)',
                       pointerEvents: isMatched ? 'none' : 'auto',
                       textAlign: 'left'
                     }}
@@ -597,7 +597,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                         : selectedGraph === g 
                           ? '#10b981' 
                           : 'var(--panel-border)',
-                      color: isMatched ? '#10b981' : 'white',
+                      color: isMatched ? '#16824F' : 'var(--text-primary)',
                       pointerEvents: isMatched ? 'none' : 'auto',
                       textAlign: 'left'
                     }}

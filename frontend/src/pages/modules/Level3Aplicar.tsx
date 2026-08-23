@@ -36,7 +36,12 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
   const animationRef = useRef<number | null>(null);
 
   // Challenge States
-  const [challengeData, setChallengeData] = useState<ChallengeData | null>(null);
+  const [challengeData, setChallengeData] = useState<ChallengeData>({
+    challenge: 'Un móvil parte de 10 m y llega a 90 m en 8 s. Calcula su velocidad constante.',
+    datos: { x0: 10, x_target: 90, t_target: 8 },
+    respuesta_esperada: 10,
+    unidad: 'm/s'
+  });
   const [activityId, setActivityId] = useState<string | null>(null);
 
   // Guided solver states
@@ -462,7 +467,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
       )}
 
       {/* CHALLENGE TAB */}
-      {activeTab === 'challenge' && challengeData && (
+      {activeTab === 'challenge' && (
         <div style={{ maxWidth: '750px', margin: '0 auto' }} className="animate-fade-in">
           
           <div className="glass-panel" style={{ marginBottom: '24px', background: 'rgba(245, 158, 11, 0.05)', borderColor: 'rgba(245,158,11,0.2)' }}>
