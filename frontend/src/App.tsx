@@ -52,7 +52,7 @@ const MainAppContent: React.FC = () => {
       case 'teacher-panel':
         return <TeacherDashboard onNavigate={handleNavigate} />;
       case 'expert-panel':
-        return <ExpertDashboard onNavigate={handleNavigate} />;
+        return <ExpertDashboard />;
       case 'level1':
         return <Level1Recordar onBack={() => handleNavigate('dashboard')} />;
       case 'level2':
