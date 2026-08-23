@@ -287,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navigation layout */
 .navbar {
-  height: 70px;
+  min-height: 70px;
   border-bottom: 1px solid var(--panel-border);
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
@@ -309,12 +309,26 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  color: var(--text-primary);
+  flex: 1 1 0;
+  min-width: 220px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 24px;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 1 1 0;
+  min-width: 220px;
 }
 
 .nav-link {
@@ -341,6 +355,37 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
   font-weight: 600;
   color: #c084fc;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    height: auto;
+    min-height: 70px;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .nav-brand,
+  .nav-actions {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 0;
+  }
+
+  .user-tag {
+    max-width: 45vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Flip Cards (Recordar module) */

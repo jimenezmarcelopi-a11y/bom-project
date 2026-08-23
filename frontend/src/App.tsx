@@ -126,7 +126,7 @@ const MainAppContent: React.FC = () => {
             )}
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className="nav-actions">
             <span className="user-tag" style={{
               color: getRoleBadgeColor(user.rol),
               background: `${getRoleBadgeColor(user.rol)}15`,

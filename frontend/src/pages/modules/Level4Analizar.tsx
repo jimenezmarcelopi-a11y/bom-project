@@ -21,7 +21,17 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState<string>('debugger'); // debugger, graph_analysis
   
   // Data
-  const [actData, setActData] = useState<ActivityData | null>(null);
+  const [actData, setActData] = useState<ActivityData>({
+    enunciado: 'Un estudiante calcula una velocidad usando una distancia expresada en metros y un tiempo expresado en horas, sin convertir las unidades.',
+    opciones_diagnostico: [
+      'La respuesta es correcta porque las unidades no afectan el resultado.',
+      'El error está en mezclar metros y horas sin convertir las unidades.',
+      'El error está en usar una trayectoria recta.',
+      'No existe ningún error en el procedimiento.'
+    ],
+    correct_idx: 1,
+    solucion_correcta: 'Las unidades deben pertenecer al mismo sistema antes de aplicar v = d/t.'
+  });
   const [activityId, setActivityId] = useState<string | null>(null);
 
   // Debugger state
@@ -309,7 +319,7 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
       </div>
 
       {/* TAB 1: ERROR DEBUGGER */}
-      {activeTab === 'debugger' && actData && (
+      {activeTab === 'debugger' && (
         <div style={{ maxWidth: '800px', margin: '0 auto' }} className="animate-fade-in">
           <h2 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>Encuentra el Error del Estudiante</h2>
           
