@@ -41,7 +41,20 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
   const [timeline, setTimeline] = useState<TimelineItem[]>([
     { era: 'Concepto fundamental', title: 'Movimiento uniforme', description: 'En el MRU se recorren distancias iguales en intervalos de tiempo iguales.', icon: 'book' }
   ]);
-  const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([]);
+  const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([
+    {
+      id: 1,
+      question: '¿Qué caracteriza al Movimiento Rectilíneo Uniforme?',
+      options: ['Trayectoria curva y aceleración variable', 'Trayectoria recta y velocidad constante', 'Velocidad siempre creciente', 'Aceleración constante distinta de cero'],
+      correct_idx: 1
+    },
+    {
+      id: 2,
+      question: '¿Cuál es la unidad del Sistema Internacional para la velocidad?',
+      options: ['Metro (m)', 'Segundo (s)', 'Metro por segundo (m/s)', 'Newton (N)'],
+      correct_idx: 2
+    }
+  ]);
   const [activityIds, setActivityIds] = useState<{ [key: string]: string }>({});
 
   // Search

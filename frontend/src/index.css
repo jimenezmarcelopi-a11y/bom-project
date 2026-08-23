@@ -92,8 +92,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(139, 92, 246, 0.05);
+  border-color: #B8DDF4;
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(59, 167, 232, 0.08);
 }
 
 .glass-panel-glow {
@@ -181,13 +181,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--panel-border);
   color: var(--text-primary);
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #F0F8FC;
+  border-color: #B8DDF4;
   transform: translateY(-1px);
 }
 
@@ -289,7 +289,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
   height: 70px;
   border-bottom: 1px solid var(--panel-border);
-  background: rgba(10, 14, 23, 0.8);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;

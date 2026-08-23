@@ -115,10 +115,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule, onBack }) 
           fontFamily: 'var(--font-title)'
         }}>BOM</div>
         
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '8px' }}>
-          ¡Hola, <span className="gradient-text">{user?.nombre}</span>!
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '8px', color: 'var(--text-primary)' }}>
+          ¡Hola, <span style={{ color: 'var(--primary)' }}>{user?.nombre}</span>!
         </h1>
-        <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', fontSize: '1.05rem', lineHeight: '1.6' }}>
+        <p style={{ color: 'var(--text-primary)', maxWidth: '750px', fontSize: '1.05rem', lineHeight: '1.6' }}>
           Te damos la bienvenida a BOM (Bloom-Oriented MRU), un Objeto Virtual de Aprendizaje interactivo. Aquí recorrerás seis niveles cognitivos diseñados para consolidar tu dominio sobre el Movimiento Rectilíneo Uniforme.
         </p>
       </div>
