@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, Save, Sparkles, BookOpen, Send, Eye, HelpCircle } from 'lucide-react';
+import { OvaTools } from '../../components/OvaTools';
 
 interface Level6Props {
   onBack: () => void;
@@ -269,6 +270,7 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
           El nivel más alto de la taxonomía cognitiva. Genera conocimiento original diseñando tus propios enunciados de problemas de física o redactando guías experimentales caseras verificables.
         </p>
       </div>
+      <OvaTools title="Nivel 6 - Crear" description="Portafolio digital para crear problemas y experimentos de MRU." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -513,7 +515,7 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
               const isProblem = creation.tipo_creacion === 'problema_mru';
               
               return (
-                <div key={idx} className="glass-panel" style={{ background: 'rgba(30, 41, 59, 0.25)' }}>
+                <div key={idx} className="glass-panel" style={{ background: '#FFFFFF' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--panel-border)', paddingBottom: '12px', marginBottom: '16px' }}>
                     <div>
                       <span style={{ 
@@ -527,7 +529,7 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
                       }}>
                         {isProblem ? 'Problema Original' : 'Diseño Experimental'}
                       </span>
-                      <h3 style={{ fontSize: '1.25rem', color: 'white', marginTop: '8px' }}>
+                      <h3 style={{ fontSize: '1.25rem', color: 'var(--text-primary)', marginTop: '8px' }}>
                         {creation.titulo}
                       </h3>
                     </div>
@@ -567,7 +569,7 @@ export const Level6Crear: React.FC<Level6Props> = ({ onBack }) => {
                   {/* Teacher Feedback section */}
                   {item.comentario_docente && (
                     <div style={{ marginTop: '20px', padding: '12px 16px', background: 'rgba(16, 185, 129, 0.08)', borderLeft: '4px solid #10b981', borderRadius: '4px' }}>
-                      <h4 style={{ fontSize: '0.88rem', color: 'white', fontWeight: 600, marginBottom: '4px' }}>
+                      <h4 style={{ fontSize: '0.88rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '4px' }}>
                         Retroalimentación de tu Profesor:
                       </h4>
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>

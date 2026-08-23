@@ -49,7 +49,11 @@ interface SystemStats {
   promedio_calificaciones: number;
 }
 
-export const TeacherDashboard: React.FC = () => {
+interface TeacherDashboardProps {
+  onNavigate: (view: string) => void;
+}
+
+export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ onNavigate }) => {
   const { token, apiBase } = useAuth();
   
   // Tabs
@@ -141,6 +145,13 @@ export const TeacherDashboard: React.FC = () => {
     return `${mins}m`;
   };
 
+  const groupProgress = studentsList.length > 0
+    ? Math.round(studentsList.reduce((total, student) => {
+      const modules = Object.values(student.modulos);
+      return total + (modules.length > 0 ? modules.reduce((sum, module) => sum + module.progreso, 0) / modules.length : 0);
+    }, 0) / studentsList.length)
+    : 0;
+
   return (
     <div className="container" style={{ padding: '40px 24px' }}>
       
@@ -150,6 +161,9 @@ export const TeacherDashboard: React.FC = () => {
         <p style={{ color: 'var(--text-secondary)' }}>
           Monitorea el avance de tu aula escolar en la Taxonomía de Bloom de MRU, califica los portafolios y respuestas abiertas de tus alumnos y analiza las estadísticas generales del sistema.
         </p>
+        <button className="btn btn-primary" onClick={() => onNavigate('dashboard')} style={{ marginTop: '18px' }}>
+          <FileText size={16} /> Ver todos los niveles del OVA
+        </button>
       </div>
 
       {/* Tabs */}
@@ -296,9 +310,9 @@ export const TeacherDashboard: React.FC = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 <h3 style={{ fontSize: '1.4rem' }}>Evidencias y Evaluaciones Entregadas</h3>
                 {selectedStudent.evaluaciones.map((ev) => (
-                  <div key={ev.evaluacion_id} className="glass-panel" style={{ background: 'rgba(30, 41, 59, 0.2)' }}>
+                  <div key={ev.evaluacion_id} className="glass-panel" style={{ background: '#FFFFFF' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--panel-border)', paddingBottom: '10px', marginBottom: '12px' }}>
-                      <h4 style={{ fontSize: '1.1rem', color: 'white' }}>{ev.actividad_titulo}</h4>
+                      <h4 style={{ fontSize: '1.1rem', color: 'var(--text-primary)' }}>{ev.actividad_titulo}</h4>
                       <div>
                         {ev.comentario_docente ? (
                           <span style={{ color: '#10b981', fontWeight: 700 }}>Puntuación: {ev.puntuacion} / 100</span>
@@ -344,7 +358,7 @@ export const TeacherDashboard: React.FC = () => {
                     className="glass-panel" 
                     style={{ 
                       cursor: 'pointer',
-                      background: activeGradingId === item.evaluacion_id ? 'rgba(16,185,129,0.06)' : 'rgba(30, 41, 59, 0.25)',
+                      background: activeGradingId === item.evaluacion_id ? '#EDF9F2' : '#FFFFFF',
                       borderColor: activeGradingId === item.evaluacion_id ? '#10b981' : 'var(--panel-border)',
                       transition: 'all 0.2s'
                     }}
@@ -362,7 +376,7 @@ export const TeacherDashboard: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 style={{ fontSize: '1.15rem', color: 'white', marginBottom: '4px' }}>{item.actividad_titulo}</h3>
+                    <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '4px' }}>{item.actividad_titulo}</h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
                       Alumno: <strong>{item.estudiante_nombre}</strong>
                     </p>
@@ -475,6 +489,18 @@ export const TeacherDashboard: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }} className="animate-fade-in">
               {/* Metrics cards grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+                <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ padding: '12px', background: '#E3F5FB', borderRadius: '12px', color: '#187FA8' }}>
+                    <BarChart size={24} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Progreso Promedio del Grupo</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{groupProgress}%</div>
+                    <div style={{ height: '6px', background: '#E1EAF2', borderRadius: '3px', overflow: 'hidden', marginTop: '6px' }}>
+                      <div style={{ height: '100%', width: `${groupProgress}%`, background: 'var(--primary)', borderRadius: '3px' }} />
+                    </div>
+                  </div>
+                </div>
                 <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{ padding: '12px', background: 'rgba(16, 185, 129, 0.15)', borderRadius: '12px', color: '#10b981' }}>
                     <Users size={24} />

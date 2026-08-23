@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, BookOpen, Brain, Play, RotateCcw, AlertCircle, Check } from 'lucide-react';
+import { OvaTools, SoundToggle, useOvaSound } from '../../components/OvaTools';
 
 interface Level2Props {
   onBack: () => void;
@@ -17,6 +18,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);
   const [carX, setCarX] = useState<number>(10); // scale 0-100m
+  const sound = useOvaSound();
   
   const animationRef = useRef<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -263,6 +265,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
   }, [carX, time, motionType]);
 
   const handleStartSim = () => {
+    sound.play(620);
     setIsPlaying(true);
   };
 
@@ -364,6 +367,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
           Interpreta el comportamiento físico del MRU. Visualiza las relaciones de cambio a través de animaciones y asocia diferentes movimientos rectilíneos con su representación gráfica exacta.
         </p>
       </div>
+      <OvaTools title="Nivel 2 - Comprender" description="Simulación de posición y velocidad del MRU." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -417,18 +421,18 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
           <div>
             <h2 style={{ fontSize: '1.4rem', marginBottom: '12px' }}>Simulador de Trazado de Gráficas</h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5', marginBottom: '24px' }}>
-              Selecciona un escenario de movimiento, haz clic en **Iniciar** y observa cómo se grafican de manera síncrona la Posición ($x-t$) y la Velocidad ($v-t$) en tiempo real.
+              Selecciona un escenario de movimiento, haz clic en Iniciar y observa cómo se grafican de manera síncrona la Posición ($x-t$) y la Velocidad ($v-t$) en tiempo real.
             </p>
 
             <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '1rem', color: 'white', marginBottom: '12px' }}>1. Selecciona el Tipo de Movimiento:</h3>
+              <h3 style={{ fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '12px' }}>1. Selecciona el Tipo de Movimiento:</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <button 
                   className="btn btn-outline"
                   onClick={() => changeMotionType('forward')}
                   style={{
                     justifyContent: 'flex-start',
-                    background: motionType === 'forward' ? 'rgba(59, 130, 246, 0.15)' : 'rgba(0,0,0,0.2)',
+                    background: motionType === 'forward' ? '#EAF7FD' : '#FFFFFF',
                     borderColor: motionType === 'forward' ? '#3b82f6' : 'var(--panel-border)'
                   }}
                 >
@@ -440,7 +444,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                   onClick={() => changeMotionType('rest')}
                   style={{
                     justifyContent: 'flex-start',
-                    background: motionType === 'rest' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(0,0,0,0.2)',
+                    background: motionType === 'rest' ? '#EAF7F0' : '#FFFFFF',
                     borderColor: motionType === 'rest' ? '#10b981' : 'var(--panel-border)'
                   }}
                 >
@@ -452,7 +456,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                   onClick={() => changeMotionType('backward')}
                   style={{
                     justifyContent: 'flex-start',
-                    background: motionType === 'backward' ? 'rgba(236, 72, 153, 0.15)' : 'rgba(0,0,0,0.2)',
+                    background: motionType === 'backward' ? '#F1EEFC' : '#FFFFFF',
                     borderColor: motionType === 'backward' ? '#ec4899' : 'var(--panel-border)'
                   }}
                 >
@@ -462,20 +466,21 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '16px' }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <button className="btn btn-primary" onClick={handleStartSim} disabled={isPlaying || time >= 12}>
                 Iniciar Animación
               </button>
               <button className="btn btn-outline" onClick={handleResetSim}>
                 <RotateCcw size={16} /> Reiniciar
               </button>
+              <SoundToggle enabled={sound.enabled} onToggle={() => sound.setEnabled(!sound.enabled)} />
             </div>
             
             <div className="alert-box alert-info" style={{ marginTop: '24px', fontSize: '0.85rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', marginBottom: '4px' }}>
                 <AlertCircle size={14} /> Relación Teórica:
               </div>
-              Una velocidad constante se traduce en una **pendiente lineal recta** en la gráfica de posición, demostrando que distancias iguales se recorren en tiempos iguales.
+              Una velocidad constante se traduce en una pendiente lineal recta en la gráfica de posición, demostrando que distancias iguales se recorren en tiempos iguales.
             </div>
           </div>
 
@@ -538,7 +543,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                         ? 'rgba(16, 185, 129, 0.1)' 
                         : selectedDesc === d 
                           ? 'rgba(16, 185, 129, 0.2)' 
-                          : 'rgba(30, 41, 59, 0.2)',
+                          : '#FFFFFF',
                       borderColor: isMatched 
                         ? 'rgba(16, 185, 129, 0.3)' 
                         : selectedDesc === d 
@@ -586,7 +591,7 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
                         ? 'rgba(16, 185, 129, 0.1)' 
                         : selectedGraph === g 
                           ? 'rgba(16, 185, 129, 0.2)' 
-                          : 'rgba(30, 41, 59, 0.2)',
+                          : '#FFFFFF',
                       borderColor: isMatched 
                         ? 'rgba(16, 185, 129, 0.3)' 
                         : selectedGraph === g 
@@ -619,30 +624,30 @@ export const Level2Comprender: React.FC<Level2Props> = ({ onBack }) => {
           <h2 style={{ fontSize: '1.5rem', marginBottom: '24px' }}>Comprensión mediante Analogías de la Vida Cotidiana</h2>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: 'rgba(30, 41, 59, 0.2)' }}>
+            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: '#FFFFFF' }}>
               <div style={{ fontSize: '2.5rem', flexShrink: 0 }}>🚶‍♂️💨</div>
               <div>
-                <h3 style={{ fontSize: '1.15rem', color: 'white', marginBottom: '6px' }}>La Cinta Transportadora del Aeropuerto</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '6px' }}>La Cinta Transportadora del Aeropuerto</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>
                   Cuando te subes a una banda transportadora recta en el aeropuerto y te quedas quieto, la banda te mueve a una velocidad fija constante. Cada segundo recorres exactamente la misma cantidad de metros. No aceleras ni frenas: esto es un MRU perfecto en la realidad urbana.
                 </p>
               </div>
             </div>
 
-            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: 'rgba(30, 41, 59, 0.2)' }}>
+            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: '#FFFFFF' }}>
               <div style={{ fontSize: '2.5rem', flexShrink: 0 }}>🪜</div>
               <div>
-                <h3 style={{ fontSize: '1.15rem', color: 'white', marginBottom: '6px' }}>La Escalera Mecánica</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '6px' }}>La Escalera Mecánica</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>
                   Una escalera mecánica funciona a una velocidad uniforme regulada por motores. Si observáramos un escalón de la escalera en su tramo recto, veríamos que sube a velocidad constante. La distancia vertical y horizontal avanzan en proporciones lineales directas con el tiempo.
                 </p>
               </div>
             </div>
 
-            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: 'rgba(30, 41, 59, 0.2)' }}>
+            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '20px', background: '#FFFFFF' }}>
               <div style={{ fontSize: '2.5rem', flexShrink: 0 }}>🚢</div>
               <div>
-                <h3 style={{ fontSize: '1.15rem', color: 'white', marginBottom: '6px' }}>Un Barco de Carga en Alta Mar</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '6px' }}>Un Barco de Carga en Alta Mar</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>
                   Una vez que un gran carguero alcanza el mar abierto, sus motores operan a revoluciones constantes en trayectos de cientos de millas. En ausencia de oleaje fuerte, el barco describe una trayectoria prácticamente rectilínea con velocidad uniforme durante horas, lo que constituye un excelente ejemplo de MRU a escala geográfica.
                 </p>

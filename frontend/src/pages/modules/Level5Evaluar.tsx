@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, Save, Scale, FileText, Check, AlertCircle } from 'lucide-react';
+import { OvaTools } from '../../components/OvaTools';
 
 interface Level5Props {
   onBack: () => void;
@@ -153,6 +154,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
           Emite juicios críticos fundamentados en leyes físicas. Analiza discrepancias técnicas entre testimonios y modelos científicos de MRU y aprende a calificar la validez de un argumento usando rúbricas de evaluación.
         </p>
       </div>
+      <OvaTools title="Nivel 5 - Evaluar" description="Estudio de caso y rúbrica científica del MRU." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -191,8 +193,8 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '32px' }} className="animate-fade-in">
           <div>
             <h2 style={{ fontSize: '1.4rem', marginBottom: '16px' }}>Estudio de Caso Real</h2>
-            <div className="glass-panel" style={{ padding: '20px', background: 'rgba(30, 41, 59, 0.15)', marginBottom: '20px' }}>
-              <p style={{ color: 'white', lineHeight: '1.6', fontSize: '0.92rem', marginBottom: '12px' }}>
+            <div className="glass-panel" style={{ padding: '20px', background: '#FFFFFF', marginBottom: '20px' }}>
+              <p style={{ color: 'var(--text-primary)', lineHeight: '1.6', fontSize: '0.92rem', marginBottom: '12px' }}>
                 {caseData.caso}
               </p>
               <h4 style={{ color: '#f43f5e', fontSize: '0.88rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '6px' }}>Preguntas Orientadoras:</h4>
@@ -292,7 +294,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
                   className="btn btn-outline"
                   style={{
                     justifyContent: 'flex-start',
-                    background: activeSample === sample.id ? 'rgba(244, 63, 94, 0.15)' : 'rgba(0,0,0,0.2)',
+                    background: activeSample === sample.id ? '#FFF0F3' : '#FFFFFF',
                     borderColor: activeSample === sample.id ? '#f43f5e' : 'var(--panel-border)'
                   }}
                 >
@@ -302,8 +304,8 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
               ))}
             </div>
 
-            <div className="glass-panel" style={{ marginTop: '24px', background: 'rgba(30, 41, 59, 0.2)' }}>
-              <h4 style={{ fontSize: '0.95rem', color: 'white', marginBottom: '8px' }}>Argumento Escrito del Estudiante:</h4>
+            <div className="glass-panel" style={{ marginTop: '24px', background: '#FFFFFF' }}>
+              <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '8px' }}>Argumento Escrito del Estudiante:</h4>
               <p style={{ fontStyle: 'italic', fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
                 "{sampleArguments[activeSample].text}"
               </p>
@@ -317,7 +319,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
               {/* Criterion 1 */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <label className="form-label" style={{ color: 'white' }}>1. Precisión Física (Juicio del caso)</label>
+                  <label className="form-label" style={{ color: 'var(--text-primary)' }}>1. Precisión Física (Juicio del caso)</label>
                   <span style={{ color: '#f43f5e', fontWeight: 600 }}>{rubricScores.precision} / 5</span>
                 </div>
                 <input 
@@ -333,7 +335,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
               {/* Criterion 2 */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <label className="form-label" style={{ color: 'white' }}>2. Rigor Matemático (Cálculos y despejes)</label>
+                  <label className="form-label" style={{ color: 'var(--text-primary)' }}>2. Rigor Matemático (Cálculos y despejes)</label>
                   <span style={{ color: '#f43f5e', fontWeight: 600 }}>{rubricScores.formulas} / 5</span>
                 </div>
                 <input 
@@ -349,7 +351,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
               {/* Criterion 3 */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <label className="form-label" style={{ color: 'white' }}>3. Claridad y Coherencia Argumentativa</label>
+                  <label className="form-label" style={{ color: 'var(--text-primary)' }}>3. Claridad y Coherencia Argumentativa</label>
                   <span style={{ color: '#f43f5e', fontWeight: 600 }}>{rubricScores.claridad} / 5</span>
                 </div>
                 <input 
@@ -373,7 +375,7 @@ export const Level5Evaluar: React.FC<Level5Props> = ({ onBack }) => {
                     <strong>Calificación confirmada.</strong> Promedio otorgado: {((rubricScores.precision + rubricScores.formulas + rubricScores.claridad) / 3).toFixed(1)} / 5.
                   </div>
                   <div style={{ padding: '12px', background: 'rgba(255,255,255,0.02)', borderRadius: '6px' }}>
-                    <h5 style={{ fontSize: '0.82rem', color: 'white', marginBottom: '4px' }}>Retroalimentación del Experto Docente:</h5>
+                    <h5 style={{ fontSize: '0.82rem', color: 'var(--text-primary)', marginBottom: '4px' }}>Retroalimentación del Experto Docente:</h5>
                     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
                       {sampleArguments[activeSample].score}
                     </p>

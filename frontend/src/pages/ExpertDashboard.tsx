@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { ShieldCheck, Clipboard, Star, BarChart3 } from 'lucide-react';
+import { ExpertEvaluationLinks } from '../components/ExpertEvaluationLinks';
 
 interface AggregateReport {
   promedios: {
@@ -24,7 +25,11 @@ interface AggregateReport {
   }>;
 }
 
-export const ExpertDashboard: React.FC = () => {
+interface ExpertDashboardProps {
+  onNavigate: (view: string) => void;
+}
+
+export const ExpertDashboard: React.FC<ExpertDashboardProps> = ({ onNavigate }) => {
   const { token, apiBase } = useAuth();
   
   // Tabs
@@ -147,7 +152,12 @@ export const ExpertDashboard: React.FC = () => {
         <p style={{ color: 'var(--text-secondary)' }}>
           Validación científica y tecnológica del Objeto Virtual de Aprendizaje (OVA) para la enseñanza del MRU. Evalúa la adecuación pedagógica (Taxonomía de Bloom), la calidad técnica (criterios COdA) y el rigor científico.
         </p>
+        <button className="btn btn-primary" onClick={() => onNavigate('dashboard')} style={{ marginTop: '18px' }}>
+          <Clipboard size={16} /> Ver y recorrer todos los niveles
+        </button>
       </div>
+
+      <ExpertEvaluationLinks />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -364,7 +374,7 @@ export const ExpertDashboard: React.FC = () => {
                 <h3 style={{ fontSize: '1.4rem' }}>Observaciones Detalladas de Expertos</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxHeight: '550px', overflowY: 'auto', paddingRight: '8px' }}>
                   {report.detalles_por_experto.map((exp, idx) => (
-                    <div key={idx} className="glass-panel" style={{ background: 'rgba(30, 41, 59, 0.2)' }}>
+                    <div key={idx} className="glass-panel" style={{ background: '#FFFFFF' }}>
                       <div style={{ borderBottom: '1px solid var(--panel-border)', paddingBottom: '8px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
                         <strong>{exp.nombre}</strong>
                         <span style={{ color: 'var(--text-muted)' }}>{new Date(exp.fecha).toLocaleDateString()}</span>

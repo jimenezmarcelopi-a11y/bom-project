@@ -43,7 +43,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       level: "Nivel 4",
       description: "Deconstruir movimientos, depurar errores procedimentales y comparar gráficas de velocidad.",
       color: "#6564C8",
-      background: "#BFD4F7",
+      background: "#DCE9FA",
       activitiesCount: 1
     },
     {
@@ -52,7 +52,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       level: "Nivel 5",
       description: "Emitir juicios sobre casos controversiales de exceso de velocidad basándote en evidencia física.",
       color: "#6564C8",
-      background: "#BFD4F7",
+      background: "#DCE9FA",
       activitiesCount: 1
     },
     {
@@ -61,7 +61,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       level: "Nivel 6",
       description: "Crear problemas originales y diseñar planes experimentales caseros de MRU.",
       color: "#6564C8",
-      background: "#BFD4F7",
+      background: "#DCE9FA",
       activitiesCount: 1
     }
   ];
@@ -125,7 +125,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
         marginBottom: '40px'
       }} className="animate-fade-in">
         <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ padding: '12px', background: 'rgba(6, 182, 212, 0.15)', borderRadius: '12px', color: '#06b6d4' }}>
+          <div style={{ padding: '12px', background: '#E3F5FB', borderRadius: '12px', color: '#187FA8' }}>
             <Clock size={24} />
           </div>
           <div>
@@ -135,7 +135,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
         </div>
 
         <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ padding: '12px', background: 'rgba(16, 185, 129, 0.15)', borderRadius: '12px', color: '#10b981' }}>
+          <div style={{ padding: '12px', background: '#E5F7EC', borderRadius: '12px', color: '#16824F' }}>
             <CheckCircle2 size={24} />
           </div>
           <div>
@@ -145,14 +145,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
         </div>
 
         <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ padding: '12px', background: 'rgba(139, 92, 246, 0.15)', borderRadius: '12px', color: '#8b5cf6' }}>
+          <div style={{ padding: '12px', background: '#E7E8FB', borderRadius: '12px', color: '#5756B3' }}>
             <Award size={24} />
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600 }}>Progreso General</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{overallPercentage}%</div>
-              <div style={{ flex: 1, height: '8px', background: 'rgba(255,255,255,0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+              <div style={{ flex: 1, height: '8px', background: '#E1EAF2', borderRadius: '4px', overflow: 'hidden' }}>
                 <div style={{ height: '100%', width: `${overallPercentage}%`, background: 'var(--primary)', borderRadius: '4px', transition: 'width 0.5s ease' }} />
               </div>
             </div>
@@ -192,7 +192,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = `0 12px 30px rgba(0,0,0,0.4), 0 0 15px ${mod.color}20`;
+                e.currentTarget.style.boxShadow = `0 12px 30px rgba(53,91,124,0.16), 0 0 15px ${mod.color}20`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';

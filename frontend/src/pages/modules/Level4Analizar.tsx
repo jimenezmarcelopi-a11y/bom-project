@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, AlertTriangle, RefreshCw, BarChart3 } from 'lucide-react';
+import { OvaTools } from '../../components/OvaTools';
 
 interface Level4Props {
   onBack: () => void;
@@ -273,6 +274,7 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
           Deconstruye problemas físicos y gráficas complejas en tramos de movimiento. Identifica fallos de conversión de unidades y calcula velocidades segmentadas distinguiendo sentidos de avance.
         </p>
       </div>
+      <OvaTools title="Nivel 4 - Analizar" description="Análisis de errores y gráficas del MRU." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -313,7 +315,7 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
           
           <div className="glass-panel" style={{ marginBottom: '24px', background: 'rgba(236, 72, 153, 0.03)', borderColor: 'rgba(236, 72, 153, 0.15)' }}>
             <h3 style={{ fontSize: '1.05rem', color: '#ec4899', marginBottom: '8px', fontWeight: 600 }}>Enunciado y Solución Errónea:</h3>
-            <p style={{ color: 'white', lineHeight: '1.6', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-primary)', lineHeight: '1.6', fontSize: '0.95rem' }}>
               {actData.enunciado}
             </p>
           </div>
@@ -329,7 +331,7 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
               const isSelected = selectedOpt === idx;
               const isCorrect = actData.correct_idx === idx;
               
-              let bg = 'rgba(30, 41, 59, 0.2)';
+              let bg = '#FFFFFF';
               let border = '1px solid var(--panel-border)';
               let color = 'white';
 
@@ -485,8 +487,8 @@ export const Level4Analizar: React.FC<Level4Props> = ({ onBack }) => {
               }}
             />
             
-            <div className="glass-panel" style={{ padding: '16px', background: 'rgba(30, 41, 59, 0.15)' }}>
-              <h4 style={{ fontSize: '0.95rem', color: 'white', marginBottom: '8px' }}>Pistas de Análisis:</h4>
+            <div className="glass-panel" style={{ padding: '16px', background: '#FFFFFF' }}>
+              <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '8px' }}>Pistas de Análisis:</h4>
               <ul style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <li><strong>Tramo A (Verde):</strong> Recorre 40 metros en 4 segundos hacia adelante.</li>
                 <li><strong>Tramo B (Naranja):</strong> Se mantiene en la marca de 40 metros durante 4 segundos.</li>

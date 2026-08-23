@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, Play, RotateCcw, HelpCircle, Check, AlertCircle, Eye } from 'lucide-react';
+import { OvaTools, SoundToggle, useOvaSound } from '../../components/OvaTools';
 
 interface Level3Props {
   onBack: () => void;
@@ -29,6 +30,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
   const [simTime, setSimTime] = useState<number>(0);
   const [currentX, setCurrentX] = useState<number>(0);
   const [reachedTarget, setReachedTarget] = useState<boolean>(false);
+  const sound = useOvaSound();
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -226,6 +228,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
   }, [currentX, simTime, targetPos, reachedTarget, isPlaying, v]);
 
   const handleStart = () => {
+    sound.play(700);
     setReachedTarget(false);
     setIsPlaying(true);
   };
@@ -317,6 +320,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
           Aplica las ecuaciones algebraicas del MRU para resolver problemas cuantitativos. Utiliza el simulador de laboratorio virtual para verificar tus cálculos empíricos de forma interactiva.
         </p>
       </div>
+      <OvaTools title="Nivel 3 - Aplicar" description="Laboratorio virtual para verificar cálculos de movimiento rectilíneo uniforme." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -413,13 +417,14 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '16px' }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <button className="btn btn-primary" onClick={handleStart} disabled={isPlaying}>
                 Lanzar Móvil
               </button>
               <button className="btn btn-outline" onClick={handleReset}>
                 <RotateCcw size={16} /> Reiniciar
               </button>
+              <SoundToggle enabled={sound.enabled} onToggle={() => sound.setEnabled(!sound.enabled)} />
             </div>
 
             {reachedTarget && (
@@ -443,13 +448,13 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
               }}
             />
             
-            <div className="glass-panel" style={{ marginTop: '24px', background: 'rgba(30, 41, 59, 0.15)' }}>
-              <h3 style={{ fontSize: '1.05rem', color: 'white', marginBottom: '8px' }}>Ecuación del Movimiento:</h3>
-              <p style={{ fontFamily: 'monospace', fontSize: '1.1rem', color: '#8b5cf6', background: 'rgba(0,0,0,0.2)', padding: '10px', borderRadius: '4px', textAlign: 'center' }}>
+            <div className="glass-panel" style={{ marginTop: '24px', background: '#FFFFFF' }}>
+              <h3 style={{ fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '8px' }}>Ecuación del Movimiento:</h3>
+              <p style={{ fontFamily: 'monospace', fontSize: '1.1rem', color: '#5756B3', background: '#F0F2FC', padding: '10px', borderRadius: '4px', textAlign: 'center' }}>
                 x(t) = {x0} + ({v}) · t
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '8px', lineHeight: '1.4' }}>
-                *Ajusta los valores del panel izquierdo y observa cómo se modifica la ecuación horaria de posición en tiempo real.*
+                Ajusta los valores del panel izquierdo y observa cómo se modifica la ecuación horaria de posición en tiempo real.
               </p>
             </div>
           </div>
@@ -464,7 +469,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
             <h3 style={{ fontSize: '1.2rem', color: '#f59e0b', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <AlertCircle size={20} /> Desafío del Módulo:
             </h3>
-            <p style={{ color: 'white', fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
               {challengeData.challenge}
             </p>
           </div>
@@ -485,7 +490,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
             {/* STEP 1: Identify data */}
             {step === 1 && (
               <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <h4 style={{ fontSize: '1.05rem', color: 'white' }}>Extrae los valores del enunciado:</h4>
+                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)' }}>Extrae los valores del enunciado:</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
                   <div className="form-group">
                     <label className="form-label">x₀ (Posición Inicial en m)</label>
@@ -527,7 +532,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
             {/* STEP 2: Choose equation */}
             {step === 2 && (
               <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <h4 style={{ fontSize: '1.05rem', color: 'white' }}>Selecciona la fórmula de velocidad correspondiente:</h4>
+                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)' }}>Selecciona la fórmula de velocidad correspondiente:</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {[
                     "v = d * t",
@@ -559,7 +564,7 @@ export const Level3Aplicar: React.FC<Level3Props> = ({ onBack }) => {
             {/* STEP 3: Calculate numerical answer */}
             {step === 3 && (
               <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <h4 style={{ fontSize: '1.05rem', color: 'white' }}>Realiza los cálculos y escribe el resultado final:</h4>
+                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)' }}>Realiza los cálculos y escribe el resultado final:</h4>
                 
                 <div className="form-group">
                   <label className="form-label">Velocidad final en m/s (solo número)</label>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ArrowLeft, Book, History, Brain, HelpCircle, Check, RefreshCw } from 'lucide-react';
+import { OvaTools } from '../../components/OvaTools';
 
 interface Level1Props {
   onBack: () => void;
@@ -262,6 +263,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
           Recupera conocimientos, evoca conceptos clave, formulas matemáticas y asocia magnitudes físicas con sus unidades de medida correspondientes en el Movimiento Rectilíneo Uniforme.
         </p>
       </div>
+      <OvaTools title="Nivel 1 - Recordar" description="Glosario, historia y actividades fundamentales del MRU." includeEvaluation />
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', borderBottom: '1px solid var(--panel-border)', marginBottom: '32px', paddingBottom: '2px' }} className="animate-fade-in">
@@ -344,8 +346,8 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxHeight: '550px', overflowY: 'auto', paddingRight: '8px' }}>
               {filteredGlossary.map((item, idx) => (
-                <div key={idx} className="glass-panel" style={{ padding: '16px', background: 'rgba(30, 41, 59, 0.25)' }}>
-                  <h3 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '6px' }}>{item.term}</h3>
+                <div key={idx} className="glass-panel" style={{ padding: '16px', background: '#FFFFFF' }}>
+                  <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '6px' }}>{item.term}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: '1.5', marginBottom: '8px' }}>{item.definition}</p>
                   {(item.formula || item.unit) && (
                     <div style={{ display: 'flex', gap: '16px', fontSize: '0.78rem', background: 'rgba(255,255,255,0.03)', padding: '6px 10px', borderRadius: '4px' }}>
@@ -384,7 +386,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                   }} />
                   
                   <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#3b82f6', textTransform: 'uppercase' }}>{item.era}</span>
-                  <h3 style={{ fontSize: '1.15rem', color: 'white', margin: '4px 0 8px 0' }}>{item.title}</h3>
+                  <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: '4px 0 8px 0' }}>{item.title}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: '1.5' }}>{item.description}</p>
                 </div>
               ))}
@@ -460,7 +462,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                         ? 'rgba(16, 185, 129, 0.1)' 
                         : selectedVar === v 
                           ? 'rgba(59, 130, 246, 0.2)' 
-                          : 'rgba(30, 41, 59, 0.2)',
+                          : '#FFFFFF',
                       border: isMatched 
                         ? '1px solid rgba(16, 185, 129, 0.3)' 
                         : selectedVar === v 
@@ -503,7 +505,7 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
                         ? 'rgba(16, 185, 129, 0.1)' 
                         : selectedUnit === u 
                           ? 'rgba(59, 130, 246, 0.2)' 
-                          : 'rgba(30, 41, 59, 0.2)',
+                          : '#FFFFFF',
                       border: isMatched 
                         ? '1px solid rgba(16, 185, 129, 0.3)' 
                         : selectedUnit === u 
@@ -542,8 +544,8 @@ export const Level1Recordar: React.FC<Level1Props> = ({ onBack }) => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
             {quizQuestions.map((q, qIdx) => (
-              <div key={q.id} className="glass-panel" style={{ padding: '20px', background: 'rgba(30, 41, 59, 0.2)' }}>
-                <h3 style={{ fontSize: '1.05rem', color: 'white', marginBottom: '16px', lineHeight: '1.5' }}>
+              <div key={q.id} className="glass-panel" style={{ padding: '20px', background: '#FFFFFF' }}>
+                <h3 style={{ fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '16px', lineHeight: '1.5' }}>
                   {qIdx + 1}. {q.question}
                 </h3>
                 

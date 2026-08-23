@@ -48,9 +48,9 @@ const MainAppContent: React.FC = () => {
       case 'dashboard':
         return <Dashboard onSelectModule={(num) => handleNavigate(`level${num}`)} />;
       case 'teacher-panel':
-        return <TeacherDashboard />;
+        return <TeacherDashboard onNavigate={handleNavigate} />;
       case 'expert-panel':
-        return <ExpertDashboard />;
+        return <ExpertDashboard onNavigate={handleNavigate} />;
       case 'level1':
         return <Level1Recordar onBack={() => handleNavigate('dashboard')} />;
       case 'level2':
