@@ -15,7 +15,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Recordar",
       level: "Nivel 1",
       description: "Identificar conceptos básicos, unidades y fórmulas fundamentales del MRU.",
-      color: "#3b82f6", // Blue
+      color: "#2387D9",
+      background: "#DFF4FD",
       activitiesCount: 2
     },
     {
@@ -23,7 +24,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Comprender",
       level: "Nivel 2",
       description: "Interpretar relaciones entre distancia, tiempo y velocidad mediante representaciones gráficas.",
-      color: "#10b981", // Emerald
+      color: "#2387D9",
+      background: "#DFF4FD",
       activitiesCount: 1
     },
     {
@@ -31,7 +33,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Aplicar",
       level: "Nivel 3",
       description: "Resolver problemas reales de MRU empleando un simulador interactivo y ecuaciones físicas.",
-      color: "#f59e0b", // Amber
+      color: "#2387D9",
+      background: "#DFF4FD",
       activitiesCount: 1
     },
     {
@@ -39,7 +42,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Analizar",
       level: "Nivel 4",
       description: "Deconstruir movimientos, depurar errores procedimentales y comparar gráficas de velocidad.",
-      color: "#ec4899", // Pink
+      color: "#6564C8",
+      background: "#BFD4F7",
       activitiesCount: 1
     },
     {
@@ -47,7 +51,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Evaluar",
       level: "Nivel 5",
       description: "Emitir juicios sobre casos controversiales de exceso de velocidad basándote en evidencia física.",
-      color: "#f43f5e", // Rose
+      color: "#6564C8",
+      background: "#BFD4F7",
       activitiesCount: 1
     },
     {
@@ -55,7 +60,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       name: "Crear",
       level: "Nivel 6",
       description: "Crear problemas originales y diseñar planes experimentales caseros de MRU.",
-      color: "#8b5cf6", // Purple
+      color: "#6564C8",
+      background: "#BFD4F7",
       activitiesCount: 1
     }
   ];
@@ -87,7 +93,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
       {/* Welcome Banner */}
       <div className="glass-panel animate-fade-in" style={{
         marginBottom: '32px',
-        background: 'linear-gradient(135deg, rgba(22, 30, 49, 0.7) 0%, rgba(139, 92, 246, 0.1) 100%)',
+        background: '#FFFFFF',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -107,7 +113,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
           ¡Hola, <span className="gradient-text">{user?.nombre}</span>!
         </h1>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', fontSize: '1.05rem', lineHeight: '1.6' }}>
-          Te damos la bienvenida a **BOM (Bloom-Oriented MRU)**, un Objeto Virtual de Aprendizaje interactivo. Aquí recorrerás seis niveles cognitivos diseñados para consolidar tu dominio sobre el Movimiento Rectilíneo Uniforme.
+          Te damos la bienvenida a BOM (Bloom-Oriented MRU), un Objeto Virtual de Aprendizaje interactivo. Aquí recorrerás seis niveles cognitivos diseñados para consolidar tu dominio sobre el Movimiento Rectilíneo Uniforme.
         </p>
       </div>
 
@@ -181,6 +187,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectModule }) => {
                 position: 'relative',
                 overflow: 'hidden',
                 borderLeft: `5px solid ${mod.color}`,
+                background: mod.background,
                 transition: 'all 0.3s ease'
               }}
               onMouseEnter={(e) => {

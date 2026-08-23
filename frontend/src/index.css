@@ -1,31 +1,31 @@
 /* BOM (Bloom-Oriented MRU) CSS Design System */
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #0a0e17 0%, #04060a 100%);
-  --panel-bg: rgba(22, 30, 49, 0.55);
-  --panel-border: rgba(255, 255, 255, 0.08);
-  --panel-glow: rgba(139, 92, 246, 0.15);
+  --bg-gradient: #F8FBFD;
+  --panel-bg: #FFFFFF;
+  --panel-border: #E2ECF4;
+  --panel-glow: rgba(59, 167, 232, 0.15);
   
-  --primary: #8b5cf6;       /* Bloom Violet */
-  --primary-hover: #7c3aed;
-  --secondary: #06b6d4;     /* Electric Blue */
-  --secondary-hover: #0891b2;
+  --primary: #2387D9;
+  --primary-hover: #176EB8;
+  --secondary: #249BC7;
+  --secondary-hover: #187FA8;
   --accent: #f43f5e;        /* Rose Red */
   
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
   
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #172B4D;
+  --text-secondary: #49627F;
+  --text-muted: #7288A0;
   
   --font-title: 'Outfit', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(53, 91, 124, 0.08);
+  --shadow-md: 0 8px 24px rgba(53, 91, 124, 0.12);
+  --shadow-lg: 0 16px 40px rgba(53, 91, 124, 0.16);
   
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
@@ -45,7 +45,6 @@
 
 body {
   background: var(--bg-gradient);
-  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;

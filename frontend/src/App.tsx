@@ -151,9 +151,9 @@ const MainAppContent: React.FC = () => {
           color: 'var(--text-muted)',
           fontSize: '0.82rem',
           borderTop: '1px solid var(--panel-border)',
-          background: 'rgba(5, 8, 14, 0.5)'
+          background: '#FFFFFF'
         }}>
-          BOM (Bloom-Oriented MRU) &copy; 2026. Proyecto de Investigación y Objeto Virtual de Aprendizaje (OVA).
+          BOM (Bloom-Oriented MRU) &copy; 2026. Proyecto de Investigación y Objeto Virtual de Aprendizaje (OVA). Iván Marcelo Jiménez Pérez.
         </footer>
       )}
     </div>
