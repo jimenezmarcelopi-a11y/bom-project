@@ -9,7 +9,7 @@ interface ExpertDashboardProps {
 const evaluationSections = [
   { name: 'Sección A', description: 'Coherencia pedagógica y alineación con Bloom', url: SECTION_A_URL },
   { name: 'Sección B', description: 'Pertinencia técnica y funcionalidad del OVA', url: 'https://docs.google.com/forms/d/e/1FAIpQLSfPwpuKhoTTiWEIfY0osEy7afeBcQ-m5c8ekh3Hamfu2GS8Yg/viewform?usp=header' },
-  { name: 'Sección C', description: 'Calidad y exactitud de los contenidos del MRU', url: 'https://docs.google.com/forms/d/e/1FAIpQLScNzXdYcVXy_u7-wrh_p0q5oKp3l7xrQ1SAeVjTB6oI0Vg/viewform?usp=header' },
+  { name: 'Sección C', description: 'Calidad y exactitud de los contenidos del MRU', url: 'https://docs.google.com/forms/d/e/1FAIpQLScNzXdYcVXy_u7-wrh_p0q5p95oKp3l7xrQ1SAeVjTB6oI0Vg/viewform?usp=header' },
   { name: 'Sección D', description: 'Valoración cualitativa global: fortalezas, mejoras y recomendaciones', url: 'https://docs.google.com/forms/d/e/1FAIpQLScq0HJM2DzwzLhMcl32UiErivq5ztGdlFRPGZTKNIkU2q1N3Q/viewform?usp=header' }
 ];
 
